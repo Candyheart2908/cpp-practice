@@ -1,0 +1,125 @@
+#include <iostream>
+using namespace std;
+class Array
+{
+    public:
+    int size,count;
+    int *arr;
+    Array()
+    {
+        size=5;
+        count=0;
+        arr=new int[size];
+    }
+    void add(int value)
+    { 
+        if(count>=size)
+        {
+            cout<<"Array full";
+            resize(10);
+        }
+        for(int i=size;i>=0;i--)
+            {
+                arr[i]=arr[i-1];
+            }
+        arr[0]=value;
+        count++;
+    }
+    void insert(int value,int index)
+    {
+        if(count>=size)
+        {
+            cout<<"Array full";
+            resize(10);
+        }
+        for(int i=size;i>=index;i--)
+            {
+                arr[i]=arr[i-1];
+            }
+        arr[index]=value;
+        count++;
+    }
+    void del()
+    {
+        if(count==0)
+        {
+            cout<<"invaild ";
+        }
+        for(int i=0;i<size;i++)
+            {
+                arr[i]=arr[i+1];
+            }
+        count--;
+    }
+    void remove(int index)
+    {
+        if(count=0){
+            cout<<"invaild";
+        }
+        for(int i=index;i<size;i++)
+            {
+                arr[i]=arr[i+1];
+            }
+        count--;
+    }
+    void search(int key)
+    {
+                for(int i=0;i<size;i++)
+                    {
+                        if(arr[i]==key)
+                        {
+                            cout<<"value found at index"<<i;
+                            
+                        }
+                        else
+                        {
+                        
+                            cout<<"Not Found";
+                        }
+                        cout<<endl;
+                    }
+                    
+            
+    }
+    void resize(int newSize)
+    {
+        int *newArr=new int[newSize];
+        for(int i=0;i<size;i++)
+            {
+                newArr[i]=arr[i];
+            }
+        delete[]arr;
+        arr=newArr;
+        size=newSize;
+    }
+    void display()
+    {
+        for(int i =0;i<size;i++)
+            {
+                cout<<arr[i]<<" ";
+            }
+        cout<<endl;
+    }
+};
+int main ()
+{
+    Array a;
+    a.arr[0]=6;
+    a.arr[1]=7;
+    a.arr[2]=8;
+    a.arr[3]=9;
+    a.arr[4]=10;
+    a.display();
+    a.add(1);
+    a.display();
+    a.insert(2,1);
+    a.display();
+    a.del();
+    a.display();
+    a.remove(3);
+    a.display();
+    a.search(2); 
+    a.insert(5,5);
+        a.display();
+    return 0;
+}
