@@ -119,7 +119,6 @@ int main ()
     a.remove(3);
     a.display();
     a.search(2); 
-    a.insert(5,5);
         a.display();
     return 0;
 }
