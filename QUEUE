@@ -1,0 +1,71 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class Queue
+{
+    public:
+    int size,front,rear;
+    int*arr;
+    Queue()
+    {
+        size=5;
+        front=-1;
+        rear=-1;
+        arr=new int[size];
+    }
+    void enqueue(int value);
+    void dequeue();
+    void display();
+};
+void Queue::enqueue (int value)
+{
+    if(rear==size-1)
+    {
+        cout<<" Queue is full"<<endl;
+    }
+    else if (front==-1)
+    {
+        front++;
+    }
+    rear++;
+    arr[rear]=value;
+     }
+    void Queue::dequeue()
+{
+    if(front==-1||front==rear+1)
+    {
+        cout<<"Queue is empty"<<endl;
+    }else
+        cout<<"Element"<<" "<<arr[front]<<" "<<"dequeue"<<endl;
+    front++;
+        }
+   void Queue::display()
+    { 
+        cout<<" ELEMENTS IN ARRAY"<<endl;
+       for(int i=front; i<=rear;i++)
+        {
+            cout<<arr[i];
+            
+        }
+    
+     }
+int main()
+{
+    Queue q;
+    q.enqueue(3);
+    q.enqueue(2);
+    q.enqueue(4);
+    q.enqueue(10);
+    q.enqueue(20);
+    q.display();
+    q.dequeue();
+    q.dequeue();
+    q.display();
+     }
+
+
+
+
+
+
+
